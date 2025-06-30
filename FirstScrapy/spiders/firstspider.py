@@ -3,8 +3,6 @@ from typing import AsyncIterator, Any
 from urllib.parse import urlencode, urljoin
 
 import scrapy
-from scrapingbee import ScrapingBeeClient
-from bs4 import BeautifulSoup
 from FirstScrapy.items import FirstscrapyItem, ProductDetailsItem
 from FirstScrapy.itemloaders import FirstScrapyItemLoader, ProductDetailsLoader
 
