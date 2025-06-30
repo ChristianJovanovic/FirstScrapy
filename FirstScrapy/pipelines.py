@@ -44,7 +44,7 @@ class FillDbPipeline:
 
     def __init__(self):
         self.mongo = MongoDB()
-
+        self.mongo.getDB()['Snus'].drop()
 
     def process_item(self, item, spider):
         self.mongo.insertDB('Snuzone', 'Snus', item)

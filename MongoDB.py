@@ -8,10 +8,11 @@ class MongoDB:
                           password='example',
                           authSource='admin',
                           port=27017)
-        logging.disable(logging.DEBUG)
+
+    def getDB(self):
+        return self.client['Snuzone']
 
     def insertDB(self, db: str, collection: str, item):
         db  = self.client.get_database(db)
         collection = db[collection]
-        collection.drop()
         collection.insert_one(dict(item))
