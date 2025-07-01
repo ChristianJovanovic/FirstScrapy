@@ -8,7 +8,7 @@
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = "FirstScrapy"
-
+SCRAPEOPS_API_KEY = 'e051a594-2b3e-41d0-97f2-5dbd58880c0e'
 SPIDER_MODULES = ["FirstScrapy.spiders"]
 NEWSPIDER_MODULE = "FirstScrapy.spiders"
 
@@ -52,15 +52,18 @@ COOKIES_ENABLED = False
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
 #    "FirstScrapy.middlewares.FirstscrapyDownloaderMiddleware": 543,
-    #"scrapy.downloadermiddleware.useragent.UserAgentMiddleware": None,
-    #"scrapy_user_agents.middlewares.RandomUserAgentMiddleware": 400,
+    "scrapy.downloadermiddleware.useragent.UserAgentMiddleware": None,
+    "scrapy_user_agents.middlewares.RandomUserAgentMiddleware": 400,
+    'scrapeops_scrapy.middleware.retry.RetryMiddleware': 550,
+    'scrapy.downloadermiddlewares.retry.RetryMiddleware': None,
 }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-#EXTENSIONS = {
-#    "scrapy.extensions.telnet.TelnetConsole": None,
-#}
+EXTENSIONS = {
+    "scrapy.extensions.telnet.TelnetConsole": None,
+    'scrapeops_scrapy.extension.ScrapeOpsMonitor': 500,
+}
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
